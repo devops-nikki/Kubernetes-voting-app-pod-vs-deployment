@@ -62,9 +62,9 @@ kubernetes-voting-app
 
 1. Project Overview
 
-2. What is the Voting App?
+2. Directory Structure
 
-3. Directory Structure
+3. What is the Voting App?
 
 4. What is a Pod?
 
@@ -76,6 +76,8 @@ kubernetes-voting-app
 
 8. Conclusion
 
+9. Skills Demonstrated
+
 
 ## 🗳️ What is the Voting App?
 
@@ -83,24 +85,24 @@ The Voting App is a sample microservices-based application used to learn contain
 
 **It consists of:**
 
-*Vote App – Frontend for voting
+* Vote App – Frontend for voting
 
-Result App – Displays voting results
+* Result App – Displays voting results
 
-Worker – Processes votes
+* Worker – Processes votes
 
-Redis – Temporary storage
+* Redis – Temporary storage
 
-PostgreSQL – Persistent database*
+* PostgreSQL – Persistent database*
 
 
-This project deploys the same app twice:
+**This project deploys the same app twice:**
 
-Once using Pods
+* Once using Pods
 
-Once using Deployments
+* Once using Deployments
 
-In this project, we focus on deploying the Voting App frontend and exposing it using a Kubernetes Service.
+**In this project, we focus on deploying the Voting App frontend and exposing it using a Kubernetes Service.**
 
 ---
 
@@ -110,7 +112,7 @@ A Pod is the smallest and simplest unit in Kubernetes.
 
 🔹 Key Points:
 
-A Pod runs one or more containers
+**A Pod runs one or more containers**
 
 Containers inside a Pod share:
 
@@ -147,13 +149,13 @@ A Deployment is a higher-level Kubernetes object that manages Pods automatically
 
 🔹 Key Points:
 
-**Ensures the desired number of Pods are always running**
+* **Ensures the desired number of Pods are always running**
 
-**Provides self-healing**
+* **Provides self-healing**
 
-**Supports scaling**
+* **Supports scaling**
 
-**Enables rolling updates and rollbacks**
+* **Enables rolling updates and rollbacks**
 
 
 ## 📄 Deployment Usage in This Project
@@ -188,26 +190,32 @@ cd Kubernetes-voting-app-pod-vs-deployment
 
 **2️⃣ Deploy Using Pods**
 
+```
 kubectl apply -f pod-definition/
+```
 
 **Check resources:**
 
+```
 kubectl get pods
 kubectl get svc
-
+```
 
 ---
 
 **3️⃣ Deploy Using Deployments**
 
+```
 kubectl apply -f deployment-definition/
+```
 
 **Check deployments:**
 
+```
 kubectl get deployments
 kubectl get pods
 kubectl get svc
-
+```
 
 ---
 
@@ -215,31 +223,17 @@ kubectl get svc
 
 **If using Minikube:**
 
+```
 minikube service vote-service
 minikube service result-service
+```
 
 
 ---
 
-## 🧠 Conclusion
-
-This project clearly shows why Deployments are preferred over Pods in Kubernetes.
-
-While Pods help understand basic concepts, Deployments provide:
-
-Reliability
-
-Scalability
-
-Automation
-
-
-👉 Always use Deployments for production workloads.
-
-
 ## ✅ Which One is Better?
 
-**✔️ Deployment is Better**
+* **✔️ Deployment is Better**
 
 ### Reasons:
 
@@ -263,6 +257,19 @@ Automation
 ---
 
 ## 📌 Conclusion
+
+*This project clearly shows why Deployments are preferred over Pods in Kubernetes.*
+
+While Pods help understand basic concepts, Deployments provide:
+
+* Reliability
+
+* Scalability
+
+* Automation
+
+
+👉 Always use Deployments for production workloads.
 
 **In this project:**
 
