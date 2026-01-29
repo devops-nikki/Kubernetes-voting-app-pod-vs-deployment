@@ -8,8 +8,11 @@ This project demonstrates how to deploy a Voting Application on Kubernetes using
 
 2. Using Deployment + Service
 
+---
+
 # Directory Structure
 
+```
 kubernetes-voting-app
 │
 ├── pod-definition/
@@ -35,33 +38,73 @@ kubernetes-voting-app
 │   └── worker-deployment.yaml
 │
 └── README.md
+```
 
-The main goal is to understand:
+---
 
-What is a Pod
+## The main objective of this project is to clearly understand:
 
-What is a Deployment
+🔹 What is a Pod
 
-Limitations of each
+🔹 What is a Deployment
 
-Which approach is better and why
+🔹 Limitations of using Pods directly
+
+🔹 Why Deployments are preferred in real‑world Kubernetes environments
 
 
-This project is created for learning Kubernetes fundamentals and is suitable for DevOps interviews and GitHub portfolios.
+**This project is beginner‑friendly and ideal for learning Kubernetes fundamentals.**
 
 
 ---
 
-🗳️ What is the Voting App?
+## 📑 Table of Contents
+
+1. Project Overview
+
+2. What is the Voting App?
+
+3. Directory Structure
+
+4. What is a Pod?
+
+5. What is a Deployment?
+
+6. Pod vs Deployment Comparison
+
+7. How to Run This Project
+
+8. Conclusion
+
+
+## 🗳️ What is the Voting App?
 
 The Voting App is a sample microservices-based application used to learn container orchestration with Kubernetes.
 
-In this project, we focus on deploying the Voting App frontend and exposing it using a Kubernetes Service.
+**It consists of:**
 
+*Vote App – Frontend for voting
+
+Result App – Displays voting results
+
+Worker – Processes votes
+
+Redis – Temporary storage
+
+PostgreSQL – Persistent database*
+
+
+This project deploys the same app twice:
+
+Once using Pods
+
+Once using Deployments
+
+In this project, we focus on deploying the Voting App frontend and exposing it using a Kubernetes Service.
 
 ---
 
-🧩 What is a Pod?
+## 🧩 What is a Pod?
 
 A Pod is the smallest and simplest unit in Kubernetes.
 
@@ -71,27 +114,26 @@ A Pod runs one or more containers
 
 Containers inside a Pod share:
 
-Network
+🔹 Network
 
-Storage
+🔹 Storage
+
+**Pods are not self-healing**
 
 
-Pods are not self-healing
-
-
-📄 Pod Usage in This Project
+## 📄 Pod Usage in This Project
 
 We first deploy the Voting App using a Pod definition file and expose it using a NodePort Service.
 
-⚠️ Limitations of Pod
+## ⚠️ Limitations of Pod
 
-❌ No auto-recovery if Pod crashes
+*❌ No auto-recovery if Pod crashes*
 
-❌ No scaling support
+*❌ No scaling support*
 
-❌ No rolling updates
+*❌ No rolling updates*
 
-❌ Manual recreation required
+*❌ Manual recreation required*
 
 
 ➡️ Pods are not recommended for production applications.
@@ -99,29 +141,29 @@ We first deploy the Voting App using a Pod definition file and expose it using a
 
 ---
 
-🧱 What is a Deployment?
+## 🧱 What is a Deployment?
 
 A Deployment is a higher-level Kubernetes object that manages Pods automatically.
 
 🔹 Key Points:
 
-Ensures the desired number of Pods are always running
+**Ensures the desired number of Pods are always running**
 
-Provides self-healing
+**Provides self-healing**
 
-Supports scaling
+**Supports scaling**
 
-Enables rolling updates and rollbacks
+**Enables rolling updates and rollbacks**
 
 
-📄 Deployment Usage in This Project
+## 📄 Deployment Usage in This Project
 
 The Voting App is deployed using a Deployment definition file with multiple replicas and exposed using the same Service.
 
 
 ---
 
-⚖️ Pod vs Deployment Comparison
+## ⚖️ Pod vs Deployment Comparison
 
 | Feature |	Pod	| Deployment |
 |---------|-----|------------|
@@ -132,76 +174,130 @@ The Voting App is deployed using a Deployment definition file with multiple repl
 | Production ready |❌ No|✅ Yes|
 | Management | Manual | Automated |
 
+---
+
+## ▶️ How to Run This Project
+
+**1️⃣ Clone the Repository**
+
+git clone https://github.com/devops-nikki/Kubernetes-voting-app-pod-vs-deployment.git
+cd Kubernetes-voting-app-pod-vs-deployment
 
 
 ---
 
-✅ Which One is Better?
+**2️⃣ Deploy Using Pods**
 
-✔️ Deployment is Better
+kubectl apply -f pod-definition/
 
-Reasons:
+**Check resources:**
 
-Automatically recreates failed Pods
-
-Easy horizontal scaling using replicas
-
-Zero-downtime updates
-
-Suitable for real-world production workloads
-
-
-🧪 When to Use Pod?
-
-Learning Kubernetes basics
-
-Testing and debugging
-
-Temporary workloads
-
+kubectl get pods
+kubectl get svc
 
 
 ---
 
-📌 Conclusion
+**3️⃣ Deploy Using Deployments**
 
-In this project:
+kubectl apply -f deployment-definition/
 
-We deployed the Voting App using Pod + Service to understand the basics
+**Check deployments:**
 
-Then improved the setup using Deployment + Service
-
-
-👉 Deployments are preferred over Pods for any real application due to reliability, scalability, and maintainability.
+kubectl get deployments
+kubectl get pods
+kubectl get svc
 
 
 ---
 
-🎯 Interview Tip
+**4️⃣ Access the Application**
 
-Question: Why should we use Deployment instead of Pod?
+**If using Minikube:**
+
+minikube service vote-service
+minikube service result-service
+
+
+---
+
+## 🧠 Conclusion
+
+This project clearly shows why Deployments are preferred over Pods in Kubernetes.
+
+While Pods help understand basic concepts, Deployments provide:
+
+Reliability
+
+Scalability
+
+Automation
+
+
+👉 Always use Deployments for production workloads.
+
+
+## ✅ Which One is Better?
+
+**✔️ Deployment is Better**
+
+### Reasons:
+
+🔹Automatically recreates failed Pods
+
+🔹Easy horizontal scaling using replicas
+
+🔹Zero-downtime updates
+
+🔹Suitable for real-world production workloads
+
+
+## 🧪 When to Use Pod?
+
+*Learning Kubernetes basics*
+
+*Testing and debugging*
+
+*Temporary workloads*
+
+---
+
+## 📌 Conclusion
+
+**In this project:**
+
+*We deployed the Voting App using Pod + Service to understand the basics*
+
+*Then improved the setup using Deployment + Service*
+
+
+**👉 Deployments are preferred over Pods for any real application due to reliability, scalability, and maintainability.**
+
+---
+
+### 🎯 Interview Tip
+
+**Question: Why should we use Deployment instead of Pod?**
 
 Answer: Pods do not provide self-healing or scaling, whereas Deployments manage Pods automatically and are suitable for production environments.
 
 
 ---
 
-🚀 Skills Demonstrated
+## 🚀 Skills Demonstrated
 
-Kubernetes Pods
+🔹Kubernetes Pods
 
-Kubernetes Deployments
+🔹Kubernetes Deployments
 
-Kubernetes Services (NodePort)
+🔹Kubernetes Services (NodePort)
 
-YAML configuration
+🔹YAML configuration
 
-Application exposure
+🔹Application exposure
 
-DevOps fundamentals
-
-
+🔹DevOps fundamentals
 
 ---
 
-⭐ If you find this project helpful, feel free to star the repository!
+**⭐ If you find this project helpful, feel free to star the repository!**
