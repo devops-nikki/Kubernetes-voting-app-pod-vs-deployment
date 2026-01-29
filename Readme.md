@@ -1,15 +1,40 @@
-Kubernetes Voting App – Pod vs Deployment
+# Kubernetes Voting App – Pod vs Deployment
 
-📌 Project Overview
+## 📌 Project Overview
 
 This project demonstrates how to deploy a Voting Application on Kubernetes using two different approaches:
 
 1. Using Pod + Service
 
-
 2. Using Deployment + Service
 
+# Directory Structure
 
+kubernetes-voting-app
+│
+├── pod-definition/
+│   ├── db-pod.yaml
+│   ├── db-service.yaml
+│   ├── redis-pod.yaml
+│   ├── redis-service.yaml
+│   ├── vote-pod.yaml
+│   ├── vote-service.yaml
+│   ├── result-pod.yaml
+│   ├── result-service.yaml
+│   └── worker-pod.yaml
+│
+├── deployment-definition/
+│   ├── db-deployment.yaml
+│   ├── db-service.yaml
+│   ├── redis-deployment.yaml
+│   ├── redis-service.yaml
+│   ├── vote-deployment.yaml
+│   ├── vote-service.yaml
+│   ├── result-deployment.yaml
+│   ├── result-service.yaml
+│   └── worker-deployment.yaml
+│
+└── README.md
 
 The main goal is to understand:
 
@@ -98,14 +123,14 @@ The Voting App is deployed using a Deployment definition file with multiple repl
 
 ⚖️ Pod vs Deployment Comparison
 
-Feature	Pod	Deployment
-
-Self-healing	❌ No	✅ Yes
-Scaling	❌ No	✅ Yes
-Rolling updates	❌ No	✅ Yes
-Rollback support	❌ No	✅ Yes
-Production ready	❌ No	✅ Yes
-Management	Manual	Automated
+| Feature |	Pod	| Deployment |
+|---------|-----|------------|
+| Self-healing |❌ No |✅ Yes|
+| Scaling	|❌ No|✅ Yes|
+| Rolling updates|❌ No|✅ Yes|
+| Rollback support |❌ No|✅ Yes|
+| Production ready |❌ No|✅ Yes|
+| Management | Manual | Automated |
 
 
 
@@ -179,4 +204,4 @@ DevOps fundamentals
 
 ---
 
-⭐ If you find this project helpful, feel free to star the repository!# Kubernetes-voting-app-pod-vs-deployment
+⭐ If you find this project helpful, feel free to star the repository!
