@@ -182,9 +182,10 @@ The Voting App is deployed using a Deployment definition file with multiple repl
 
 **1️⃣ Clone the Repository**
 
+```
 git clone https://github.com/devops-nikki/Kubernetes-voting-app-pod-vs-deployment.git
 cd Kubernetes-voting-app-pod-vs-deployment
-
+```
 
 ---
 
